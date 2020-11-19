@@ -53,7 +53,9 @@ class Fpds {
 	}
 	
 	generate(iters){
-		
+        
+    let newSamples = [];
+        
 		if(this.active.length === 0) {
 			if(this.started){
 				this.done();
@@ -118,6 +120,7 @@ class Fpds {
 						this.active.push(newSample);
 						this.grid[row * this.cols + col] = newSample;
 						this.dirtySamples.push(newSample);
+						newSamples.push(newSample);
 					}
 				}
 			}
@@ -125,7 +128,9 @@ class Fpds {
 			if(valid === false){
 				this.active.splice(randIndex,1);
 			}	
-		}
+    }
+        
+    return newSamples;
 	}
 	
 	drawLastSamples(){
